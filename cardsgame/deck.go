@@ -19,7 +19,7 @@ func newDeck() deck {
 
 	for _, suit := range cardSuits {
 		for _, value := range cardValues {
-			cards = append(cards, suit+" of "+value)
+			cards = append(cards, value+" of "+suit)
 		}
 	}
 	return cards
@@ -40,7 +40,7 @@ func (d deck) toString() string {
 }
 
 func (d deck) saveToFile(filename string) error {
-	return ioutil.WriteFile(filename, []byte(d.toString()), 0644)
+	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
 func newDeckFromFile(filename string) deck {
